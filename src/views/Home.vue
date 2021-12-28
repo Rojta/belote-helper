@@ -157,12 +157,7 @@ export default {
         {field: 'name', header: 'Igrač'},
         {field: 'round1', header: 'Runda 1'},
       ],
-      players: [{
-        id: 0,
-        name: "test1",
-        round1: 0,
-        total: 0,
-      }],
+      players: [], //default [{id: 0,name: "test1",round1: 0,total: 0,}]
     }
   },
 }
