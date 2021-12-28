@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "build": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
-    "lint": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
+    "lint": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "core-js": "^3.6.5",
