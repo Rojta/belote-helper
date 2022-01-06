@@ -62,14 +62,10 @@
               v-model:contextMenuSelection="selectedPlayer"
               @rowContextmenu="onRowContextMenu"
             >
-              <Column
-                v-for="col of save.columns"
-                :field="col.field"
-                :header="col.header"
-                :key="col.field"
-                :style="{ width: `${col.width ? col.width : '25%'}` }"
-                :sortable="true"
-              >
+              <Column field="total" header="Total" style="width: 5%" :sortable="true"></Column>
+              <Column field="name" header="Igrač"></Column>
+
+              <Column v-for="col of save.columns" :field="col.field" :header="col.header" :key="col.field" style="width: 25%" :sortable="true">
                 <template #editor="{ data, field }">
                   <InputText v-model="data[field]" autofocus />
                 </template>
@@ -84,14 +80,9 @@
             </template>
             <div v-if="history.length < 1">Nema povijest.</div>
             <DataTable v-for="game of history" :key="game" :value="game.players" class="p-mb-3" responsiveLayout="scroll" showGridlines stripedRows>
-              <Column
-                v-for="col of game.columns"
-                :field="col.field"
-                :header="col.header"
-                :key="col.field"
-                :style="{ width: `${col.width ? col.width : '25%'}` }"
-                :sortable="true"
-              >
+              <Column field="total" header="Total" style="width: 5%" :sortable="true"></Column>
+              <Column field="name" header="Igrač"></Column>
+              <Column v-for="col of game.columns" :field="col.field" :header="col.header" :key="col.field" style="width: 25%" :sortable="true">
                 <template #editor="{ data, field }">
                   <InputText v-model="data[field]" autofocus />
                 </template>
@@ -220,11 +211,7 @@ export default {
 
           this.save = {
             rounds: ["round1"],
-            columns: [
-              { field: "total", header: "Total", width: "2%" },
-              { field: "name", header: "Igrač" },
-              { field: "round1", header: "Runda 1" },
-            ],
+            columns: [{ field: "round1", header: "Runda 1" }],
             players: [], //default [{id: 0,name: "test1",round1: 0,total: 0,}]
           };
           this.sendToast("success", "Nova igra", "Nova igra je pokrenuta.");
@@ -256,11 +243,7 @@ export default {
       menuModel: [{ label: "Smakni Igrača", icon: "pi pi-fw pi-times", command: () => this.removePlayer(this.selectedPlayer) }],
       save: {
         rounds: ["round1"],
-        columns: [
-          { field: "total", header: "Total", width: "2%" },
-          { field: "name", header: "Igrač" },
-          { field: "round1", header: "Runda 1" },
-        ],
+        columns: [{ field: "round1", header: "Runda 1" }],
         players: [], //default [{id: 0,name: "test1",round1: 0,total: 0,}]
       },
       history: [],
